@@ -1,0 +1,445 @@
+@borderRadius: 4px;
+
+// 表格标题字体大小
+.arco-table .arco-table-th {
+  font-size: 13px;
+}
+
+// 方形按钮的 border-radius
+.arco-btn-shape-square {
+  &.arco-btn-size-mini {
+    border-radius: 5px;
+  }
+  &.arco-btn-size-small {
+    border-radius: 5px;
+  }
+  &.arco-btn-size-medium {
+    border-radius: 6px;
+  }
+  &.arco-btn-size-large {
+    border-radius: 8px;
+  }
+}
+
+// 自定义按钮颜色
+.arco-btn {
+  font-size: 13px;
+  &:hover {
+    transform: translateY(-2px);
+  }
+  &.primary-2 {
+    background-color: #01b0c0;
+    &:hover {
+      background-color: rgba(1, 176, 192, 0.8);
+    }
+    &:disabled {
+      background-color: rgba(1, 176, 192, 0.6);
+    }
+  }
+  &.primary-3 {
+    background-color: #21a684;
+    &:hover {
+      background-color: rgba(33, 166, 132, 0.8);
+    }
+    &:disabled {
+      background-color: rgba(33, 166, 132, 0.6);
+    }
+  }
+  &.primary-4 {
+    background-color: #944dcc;
+    &:hover {
+      background-color: rgba(148, 77, 204, 0.8);
+    }
+    &:disabled {
+      background-color: rgba(148, 77, 204, 0.6);
+    }
+  }
+  &.primary-5 {
+    background-color: #70b603;
+    &:hover {
+      background-color: rgba(112, 182, 3, 0.8);
+    }
+    &:disabled {
+      background-color: rgba(112, 182, 3, 0.6);
+    }
+  }
+  &.primary-6 {
+    background-color: #ff7d00;
+    &:hover {
+      background-color: rgba(255, 125, 0, 0.8);
+    }
+    &:disabled {
+      background-color: rgba(255, 125, 0, 0.6);
+    }
+  }
+  &.primary-7 {
+    background-color: #4bd863;
+    &:hover {
+      background-color: rgba(75, 216, 99, 0.8);
+    }
+    &:disabled {
+      background-color: rgba(75, 216, 99, 0.6);
+    }
+  }
+  &.primary-8 {
+    background-color: rgb(75, 121, 2);
+    &:hover {
+      background-color: rgba(75, 121, 2, 0.8);
+    }
+    &:disabled {
+      background-color: rgba(75, 121, 2, 0.6);
+    }
+  }
+  &.primary-9 {
+    background-color: rgb(28, 229, 205);
+    &:hover {
+      background-color: rgba(28, 229, 205, 0.8);
+    }
+    &:disabled {
+      background-color: rgba(28, 229, 205, 0.6);
+    }
+  }
+  &.primary-10 {
+    background-color: rgb(255, 168, 215);
+    &:hover {
+      background-color: rgba(255, 168, 215, 0.8);
+    }
+    &:disabled {
+      background-color: rgba(255, 168, 215, 0.6);
+    }
+  }
+  &.primary-11 {
+    background-color: rgb(255, 219, 54);
+    &:hover {
+      background-color: rgba(255, 219, 54, 0.8);
+    }
+    &:disabled {
+      background-color: rgba(255, 219, 54, 0.6);
+    }
+  }
+  &.primary-12 {
+    background-color: rgb(153, 153, 51);
+    &:hover {
+      background-color: rgba(153, 153, 51, 0.8);
+    }
+    &:disabled {
+      background-color: rgba(153, 153, 51, 0.6);
+    }
+  }
+  &.primary-13 {
+    background-color: rgb(2, 125, 180);
+    &:hover {
+      background-color: rgba(2, 125, 180, 0.8);
+    }
+    &:disabled {
+      background-color: rgba(2, 125, 180, 0.6);
+    }
+  }
+  &.primary-14 {
+    background-color: rgb(236, 128, 141);
+    &:hover {
+      background-color: rgba(236, 128, 141, 0.8);
+    }
+    &:disabled {
+      background-color: rgba(236, 128, 141, 0.6);
+    }
+  }
+  &.button-width-100 {
+    width: 100px;
+  }
+  &.small-padding {
+    padding: 0 8px;
+  }
+}
+
+.arco-btn-disabled {
+  &.arco-btn-status-normal:not([class*='primary-']) {
+    background-color: rgba(var(--primary-1), 0.6) !important;
+  }
+}
+// 表格头部搜索区域
+.search-input {
+  background-color: #fff;
+  border: solid 1px #ccc;
+  border-radius: 10px;
+  width: 100%;
+  min-width: 100px;
+  height: 36px;
+  .arco-input::placeholder {
+    color: #c5c5c5;
+  }
+}
+
+// 表格头部搜索区域（带按钮）
+.input-search-button {
+  padding-right: 0;
+  background-color: #fff;
+  border: solid 1px var(--color-primary-light-2);
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  overflow: hidden;
+  width: 100%;
+  min-width: 100px;
+  height: 36px;
+  &:hover {
+    border-color: var(--color-primary-light-2);
+  }
+  .arco-input::placeholder {
+    color: #c5c5c5;
+  }
+  .arco-input-suffix {
+    margin-left: 5px;
+    padding: 0 10px;
+    background-color: var(--color-primary-light-2);
+    color: #fff;
+    cursor: pointer;
+  }
+}
+
+// 表格标题样式
+.arco-table .arco-table-th {
+  font-weight: bold;
+}
+// 表格内容样式
+.arco-table .arco-table-td {
+  font-size: 13px;
+}
+
+// 表格总结行样式
+.arco-table-tfoot {
+  background-color: transparent;
+  box-shadow: none;
+  border-top: 1px solid var(--color-neutral-3);
+
+  .arco-table-td {
+    background-color: transparent !important;
+  }
+}
+
+// 弹窗标题加粗
+.arco-modal-title {
+  font-weight: bold;
+}
+
+// arco form
+// 输入框、下拉框、多行输入框样式
+.arco-form .arco-input-wrapper,
+.arco-form .arco-select-view-single,
+.arco-form .arco-select-view-multiple,
+.arco-form .arco-textarea-wrapper,
+.arco-form .arco-picker:not(.arco-picker-disabled),
+.table-enabled-select,
+.custom-select-wrapper {
+  border: solid 1px #ccc;
+  border-radius: @borderRadius;
+  background-color: transparent;
+  &:hover {
+    background-color: var(--color-fill-3);
+    border-color: transparent;
+  }
+  .arco-input::placeholder,
+  .arco-select-view-input::placeholder,
+  .arco-picker-start-time::placeholder,
+  .arco-textarea::placeholder {
+    color: #bbb;
+  }
+}
+
+.arco-form .arco-picker:hover {
+  background-color: var(--color-fill-3);
+  border-color: transparent;
+}
+
+.arco-select-view-multiple.arco-select-view-disabled .arco-select-view-tag {
+  color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(255, 255, 255, 0.4);
+  border-radius: @borderRadius;
+}
+
+.arco-form .arco-picker {
+  width: 100%;
+}
+
+// button-group 边框样式
+.arco-input-group > .arco-input-wrapper:not(:last-child),
+.arco-input-group > .arco-input-outer:not(:last-child),
+.arco-input-group > .arco-input-tag:not(:last-child),
+.arco-input-group > .arco-select-view:not(:last-child) {
+  border-right: 1px solid #ccc;
+}
+.arco-input-group > *:first-child,
+.arco-input-group > *:first-child .arco-input-group > *:first-child {
+  border-top-left-radius: @borderRadius;
+  border-bottom-left-radius: @borderRadius;
+}
+.arco-input-group > *:last-child,
+.arco-input-group > *:last-child .arco-input-outer > *:last-child {
+  border-top-right-radius: @borderRadius;
+  border-bottom-right-radius: @borderRadius;
+}
+
+// 输入框、下拉框样式 disabled 时样式
+.arco-input-wrapper.arco-input-disabled,
+.arco-select-view-single.arco-select-view-disabled,
+.arco-select-view-multiple.arco-select-view-disabled,
+.arco-picker-disabled {
+  color: var(--color-text-2);
+  background-color: var(--color-fill-2);
+  border-color: transparent;
+  cursor: not-allowed;
+  &:hover {
+    color: var(--color-text-3);
+  }
+}
+
+// .arco-picker-disabled {
+//   color: var(--color-text-2);
+//   background-color: var(--color-fill-2);
+//   border-color: transparent;
+// }
+
+.arco-input-wrapper .arco-input[disabled] {
+  -webkit-text-fill-color: unset;
+}
+
+.arco-picker-disabled input[disabled],
+.arco-picker-disabled:hover input[disabled] {
+  color: var(--color-text-2);
+  -webkit-text-fill-color: unset;
+}
+
+// arco-form inline 时
+.arco-form-layout-inline.custom-item-width {
+  // label宽度
+  .arco-form-item-label {
+    min-width: 130px;
+    text-align: right;
+  }
+  // 文本宽度
+  .arco-form-item-wrapper-col {
+    width: 230px;
+  }
+}
+
+// radio-button
+.arco-radio-group-button {
+  background-color: transparent;
+  overflow: hidden;
+
+  .arco-radio-button {
+    background-color: #fff;
+    color: #303133;
+    border: 1px solid #dcdfe6;
+    margin: 0;
+    box-sizing: border-box;
+    border-radius: 0;
+    &.arco-radio-disabled {
+      background-color: var(--color-secondary);
+    }
+  }
+
+  .arco-radio-button.arco-radio-checked {
+    color: #fff;
+    background-color: rgb(var(--primary-6));
+    border: 1px solid rgb(var(--primary-6));
+    &.arco-radio-disabled {
+      background-color: rgba(var(--primary-1), 0.6);
+      border: transparent;
+    }
+  }
+}
+
+/**
+*  form 表单为两列
+*  labelWidth: string; form-label 宽度
+*/
+.flex-form-2 {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  .arco-form-item {
+    width: 50%;
+    display: flex;
+    .arco-form-item-label-col {
+      width: 110px;
+      flex: none;
+    }
+    .arco-form-item-wrapper-col {
+      width: auto;
+      flex: 1;
+    }
+  }
+  &.arco-form-auto-label-width .arco-form-item .arco-form-item-label-col {
+    margin-left: 15px;
+  }
+}
+
+.flex-form-3 {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  .arco-form-item {
+    width: 33.3%;
+    display: flex;
+    .arco-form-item-label-col {
+      width: 30%;
+      min-width: 110px;
+      flex: none;
+    }
+    .arco-form-item-wrapper-col {
+      width: auto;
+      flex: 1;
+    }
+
+    .arco-form-item-content {
+      word-break: break-all;
+    }
+  }
+}
+
+/* 
+  数据穿梭框 Transfer
+*/
+.arco-transfer-operations {
+  .arco-btn,
+  .arco-btn:hover {
+    color: #fff;
+    background-color: rgb(var(--primary-6));
+  }
+  .arco-btn-disabled {
+    color: var(--color-neutral-2) !important;
+    background-color: rgba(var(--primary-1), 0.4) !important;
+  }
+}
+
+// a-modal footer 水平居中
+.arco-modal .arco-modal-footer {
+  text-align: center;
+  .arco-btn-secondary {
+    background: #aaa;
+    color: #fff;
+  }
+  .arco-btn + .arco-btn {
+    margin-left: 20px;
+  }
+}
+
+// 确认弹窗样式
+.confirm-modal {
+  .arco-modal-header {
+    border-bottom: none;
+  }
+
+  .arco-modal-footer {
+    border-top: none;
+  }
+}
+
+.danger-tip {
+  width: 100%;
+  text-align: center;
+  margin-top: 8px;
+  color: rgb(var(--danger-6));
+}

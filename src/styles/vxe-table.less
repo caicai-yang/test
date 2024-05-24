@@ -1,0 +1,204 @@
+// 自定义滚动条样式
+.vxe-table-container {
+  & ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  /*滚动条的轨道*/
+  & ::-webkit-scrollbar-track {
+    background-color: #ffffff;
+  }
+  /*滚动条里面的小方块，能向上向下移动*/
+  & ::-webkit-scrollbar-thumb {
+    background-color: rgba(212, 215, 221, 0.8);
+    border-radius: 5px;
+  }
+  & ::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(158, 166, 176, 0.8);
+  }
+  & ::-webkit-scrollbar-thumb:active {
+    background-color: rgb(158, 166, 176);
+  }
+  /*边角，即两个滚动条的交汇处*/
+  & ::-webkit-scrollbar-corner {
+    background-color: #ffffff;
+  }
+}
+
+// 更改vxe-checkbox 样式
+.vxe-cell--checkbox {
+  display: flex;
+  justify-content: center;
+  .vxe-checkbox--icon {
+    display: block;
+    box-sizing: border-box;
+    user-select: none;
+    font-weight: normal !important;
+    width: 14px;
+    height: 14px;
+  }
+  .vxe-icon-checkbox-unchecked {
+    background-color: var(--color-bg-2);
+    border: 2px solid var(--color-fill-3);
+    border-radius: var(--border-radius-small);
+    &::before {
+      content: ' ';
+    }
+    &:hover {
+      border-color: var(--color-fill-4);
+      transition: border-color 0.1s cubic-bezier(0, 0, 1, 1),
+        transform 0.3s cubic-bezier(0.3, 1.3, 0.3, 1);
+    }
+  }
+  .vxe-icon-checkbox-checked {
+    font-size: 14.5px !important;
+    color: rgb(var(--primary-6)) !important;
+  }
+  .vxe-checkbox--label {
+    padding-left: 0 !important;
+  }
+}
+
+// 更改radio样式
+// .vxe-radio--icon {
+//   font-size: 16px !important;
+// }
+
+.vxe-cell--radio:not(.is--disabled):hover .vxe-radio--icon {
+  color: rgb(var(--primary-6)) !important;
+}
+
+.is--checked.vxe-cell--radio .vxe-radio--icon {
+  color: rgb(var(--primary-6)) !important;
+}
+
+// 更改树形表格展开按钮样式
+.vxe-tree--btn-wrapper {
+  width: 20px !important;
+  height: 20px !important;
+}
+.vxe-tree--node-btn {
+  color: #4b93ff !important;
+  font-size: 20px;
+  transform: scale(1.3, 0.7);
+  &:hover {
+    color: rgb(var(--primary-6)) !important;
+  }
+  &.rotate90 {
+    transform: rotate(90deg) scale(1.3, 0.7) !important;
+  }
+}
+
+// 表格标题样式
+.vxe-cell--title {
+  font-weight: bold;
+  font-size: 13px;
+  color: rgb(var(--gray-10));
+  line-height: 1.5715;
+  background-color: var(--color-neutral-2);
+}
+
+.vxe-table--render-default {
+  font-size: 13px;
+  color: rgb(var(--gray-10));
+  line-height: 1.5715;
+  font-family: inherit;
+}
+
+.vxe-header--row .vxe-header--column {
+  height: 40px !important;
+}
+
+.vxe-table--render-default .vxe-body--column:not(.col--ellipsis),
+.vxe-table--render-default .vxe-footer--column:not(.col--ellipsis),
+.vxe-table--render-default .vxe-header--column:not(.col--ellipsis) {
+  padding: 10px 0;
+}
+
+// 表格tooltip样式
+.vxe-table--tooltip-wrapper.theme--dark {
+  background: #1d2129;
+  color: #fff;
+  font-size: 14px;
+}
+
+.vxe-table--tooltip-wrapper.theme--dark.placement--top .vxe-table--tooltip-arrow,
+.vxe-table--tooltip-wrapper.theme--dark.placement--top .vxe-table--tooltip-arrow:before {
+  border-top-color: #1d2129;
+}
+
+.vxe-table--render-default .vxe-cell--tree-node {
+  .vxe-tree-cell {
+    padding-left: 0;
+  }
+  .vxe-tree--btn-wrapper + .vxe-tree-cell {
+    padding-left: 1.5rem;
+  }
+}
+
+.vxe-table--render-default .vxe-body--column > .vxe-cell {
+  white-space: pre !important;
+}
+
+.vxe-table .vxe-sort--asc-btn,
+.vxe-table .vxe-sort--desc-btn {
+  color: #a1a3a8;
+}
+
+// 黑色主题下样式
+body[arco-theme="dark"] {
+  // 表格样式
+  .vxe-header--row,
+  .vxe-body--row {
+    background: #232324;
+  }
+  .vxe-cell--title {
+    background-color: transparent;
+  }
+  .tab .tab-header .tab-header-left .tab-header-item {
+    background-color: #313132;
+    border: #313132;
+  }
+  .tab .tab-header .tab-header-left .tab-header-item-active {
+    background-color: rgb(var(--primary-1));
+    border: rgb(var(--primary-1));
+  }
+  .vxe-table--render-default .vxe-body--row.row--hover {
+    background-color: #111111;
+  }
+
+  // tooltip样式
+  .vxe-table--tooltip-wrapper.theme--dark {
+    background: #fff;
+    color: #000;
+  }
+  .vxe-table--tooltip-wrapper.theme--dark.placement--top .vxe-table--tooltip-arrow,
+  .vxe-table--tooltip-wrapper.theme--dark.placement--top .vxe-table--tooltip-arrow:before {
+    border-top-color: #fff;
+  }
+
+  // 表格动态表头设置按钮样式
+  .setting-icon {
+    background: transparent;
+  }
+
+  // 自定义滚动条样式
+  .vxe-table-container {
+    /*滚动条里面的小方块，能向上向下移动*/
+    & ::-webkit-scrollbar-thumb {
+      background-color: rgba(138, 141, 146);
+      border-radius: 5px;
+    }
+    & ::-webkit-scrollbar-thumb:hover {
+      background-color: rgba(118, 123, 131);
+    }
+    & ::-webkit-scrollbar-thumb:active {
+      background-color: rgb(96, 100, 100);
+    }
+  }
+
+  // arco-card-tab样式
+  .arco-card-tab .arco-card-body .arco-tabs .arco-tabs-nav {
+    background: #232324;
+  }
+}
