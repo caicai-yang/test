@@ -1,15 +1,16 @@
 import { VxeTableDefines, VxeTablePropTypes, VxeColumnPropTypes } from 'vxe-table'
+import { ITableColumnInfo } from './type'
 
-type PartialColumnInfo = Partial<Omit<VxeTableDefines.ColumnInfo, 'field' | 'type'>>
+export type PartialColumnInfo = Omit<ITableColumnInfo, 'field' | 'type'>
 
 export type ISelectionColumnConfig = PartialColumnInfo & {
   field?: '_selection'
-  type: 'checkbox' | 'radio' | ''
+  type: 'checkbox' | 'radio' | null
 }
 
 export type ISeqColumnConfig = PartialColumnInfo & {
   field?: '_series'
-  type: 'seq' | ''
+  type: 'seq' | null
 }
 
 export const defaultCheckboxConfig: VxeTablePropTypes.CheckboxConfig = {
@@ -22,7 +23,7 @@ export const defaultCheckboxConfig: VxeTablePropTypes.CheckboxConfig = {
 
 export const defaultSelectionColumnConfig: ISelectionColumnConfig = {
   field: '_selection',
-  type: '',
+  type: null,
   width: 50,
   fixed: 'left',
   resizable: false
@@ -31,8 +32,10 @@ export const defaultSelectionColumnConfig: ISelectionColumnConfig = {
 // 序号列计算规则: 1.10 + 前面页总数(比如20) => '20' + '1.10'= '21.10'
 export const defaultSeqColumnConfig: ISeqColumnConfig = {
   field: '_series',
-  type: '',
+  title: '序号',
+  type: null,
   width: 80,
   fixed: 'left',
-  resizable: false
+  resizable: true,
+  treeNode: true
 }
