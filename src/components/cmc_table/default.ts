@@ -1,4 +1,5 @@
 import { VxeTableDefines, VxeTablePropTypes, VxeColumnPropTypes } from 'vxe-table'
+import { ButtonProps, IconProps } from '@arco-design/web-vue'
 import { ITableColumnInfo } from './type'
 
 export type PartialColumnInfo = Omit<ITableColumnInfo, 'field' | 'type'>
@@ -38,4 +39,16 @@ export const defaultSeqColumnConfig: ISeqColumnConfig = {
   fixed: 'left',
   resizable: true,
   treeNode: true
+}
+
+export const defaultButtonProps: ButtonProps = {
+  type: 'text',
+  size: 'mini',
+  shape: 'square',
+  status: 'normal'
+}
+
+export const defaultIconProps: IconProps = {
+  size: 18,
+  style: 'color: rgb(var(--danger-6))'
 }

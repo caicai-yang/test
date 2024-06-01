@@ -22,8 +22,13 @@
 </template>
 
 <script setup lang="tsx" name="index">
-  import { ref, toRef, useAttrs, useSlots, computed, PropType } from 'vue'
-  import { VxeTableDefines, VxeTablePropTypes, VxeColumnPropTypes } from 'vxe-table'
+  import { ref, toRef, useAttrs, useSlots, computed, PropType, resolveComponent, h } from 'vue'
+  import {
+    VxeTableDefines,
+    VxeTablePropTypes,
+    VxeColumnPropTypes,
+    VxeColumnSlotTypes
+  } from 'vxe-table'
   import { Button } from '@arco-design/web-vue'
   import _ from 'lodash'
   import {
@@ -31,10 +36,13 @@
     defaultSelectionColumnConfig,
     defaultSeqColumnConfig,
     ISelectionColumnConfig,
-    ISeqColumnConfig
+    ISeqColumnConfig,
+    defaultButtonProps,
+    defaultIconProps
   } from './default'
 
-  import { ITableColumnInfo, ISlotKey, IQueryParams } from './type'
+  import { ITableColumnInfo, ISlotKey, IQueryParams, IOperationColumnButton } from './type'
+  import { resolve } from 'path-browserify'
 
   const props = defineProps({
     height: {
@@ -101,14 +109,50 @@
 
   const dynamicHeader = ref([])
 
-  // TODO: 渲染按钮
-  function renderButton() {}
+  function renderButton(
+    button: IOperationColumnButton,
+    params: VxeColumnSlotTypes.DefaultSlotParams
+  ) {
+    const {
+      visible,
+      permission,
+      disabled,
+      icon,
+      iconProps = defaultIconProps,
+      text,
+      callback,
+      ...otherProps
+    } = button
+    const _visible = (typeof visible === 'function' ? visible(params) : visible) ?? true
+    if (!_visible) return
+    const _disabled = (typeof disabled === 'function' ? disabled(params) : disabled) ?? false
+
+    const renderIcon = icon ? () => h(resolveComponent(icon), iconProps) : null
+    const renderText = text ? () => text : null
+
+    return (
+      <Button
+        v-permission={permission}
+        disabled={_disabled}
+        onClick={() => callback?.(params)}
+        {...defaultButtonProps}
+        {...otherProps}
+        v-slots={{ icon: renderIcon, default: renderText }}
+      ></Button>
+    )
+  }
 
   const operationColumns = computed(() => {
     const operation = props.columns.find(item => item.field === 'operation')
     if (operation) {
       const { buttons } = operation
+      operation.slots = operation.slots || {}
+      buttons?.length &&
+        (operation.slots.default = params => (
+          <div class='operation-buttons'>{buttons.map(button => renderButton(button, params))}</div>
+        ))
     }
+
     return operation
   })
 
@@ -126,9 +170,16 @@
       })
     }
 
+    let hasOperationColumn = false
     const parseColumns = columns.map(item => {
-      const { slots, slotName, render, renderHeader } = item
+      const { slots, slotName, render, renderHeader, field } = item
       const tempSlots: VxeColumnPropTypes.Slots = {}
+
+      if (field === 'operation') {
+        hasOperationColumn = true
+        return Object.assign(item, operationColumns.value)
+      }
+
       if (typeof render === 'function') {
         tempSlots.default = params => render(params)
       }
@@ -172,6 +223,8 @@
       } as any)
     }
 
+    !hasOperationColumn && operationColumns.value && parseColumns.push(operationColumns.value)
+
     return parseColumns
   }
 
@@ -206,6 +259,24 @@
     .vxe-body--row.sortable-ghost,
     .vxe-body--row.sortable-chosen {
       background-color: #dfecfb;
+    }
+  }
+
+  :deep(.operation-buttons) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    button {
+      padding: 0 1px;
+    }
+
+    button + button {
+      margin-left: 2px;
+    }
+
+    .arco-icon {
+      vertical-align: middle;
     }
   }
 </style>

@@ -1,4 +1,4 @@
-import { VNode } from 'vue'
+import { VNode, Component } from 'vue'
 import { ButtonProps, IconProps } from '@arco-design/web-vue'
 import { IEnabled } from '@/types'
 import {
@@ -36,17 +36,15 @@ export type IQueryParams = {
   [key: string]: any
 }
 
-export type IOperationColumnButtons<D = VxeTableDataRow> = Array<
-  Omit<ButtonProps, 'disabled'> & {
-    visible?: Boolean | ((params: VxeColumnSlotTypes.ContentSlotParams<D>) => Boolean)
-    permission?: string
-    disabled?: Boolean | ((params: VxeColumnSlotTypes.ContentSlotParams<D>) => Boolean)
-    icon?: string
-    iconProps?: IconProps
-    text?: string
-    callback?: (params: VxeColumnSlotTypes.ContentSlotParams<D>) => void
-  }
->
+export type IOperationColumnButton<D = VxeTableDataRow> = Omit<ButtonProps, 'disabled'> & {
+  visible?: boolean | ((params: VxeColumnSlotTypes.DefaultSlotParams<D>) => boolean)
+  permission?: string
+  disabled?: boolean | ((params: VxeColumnSlotTypes.DefaultSlotParams<D>) => boolean)
+  icon?: string
+  iconProps?: IconProps
+  text?: string
+  callback?: (params: VxeColumnSlotTypes.DefaultSlotParams<D>) => void
+}
 
 export type ITableColumnInfo<D = VxeTableDataRow> = {
   type?: VxeColumnPropTypes.Type
@@ -100,7 +98,7 @@ export type ITableColumnInfo<D = VxeTableDataRow> = {
   dictionaryCode?: string
   searchable?: IEnabled
   hasEditIcon?: IEnabled
-  buttons?: IOperationColumnButtons<D>
+  buttons?: IOperationColumnButton<D>[]
 }
 
 export type ISlotKey = keyof VxeColumnPropTypes.Slots
