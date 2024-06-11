@@ -1,6 +1,14 @@
 import { VxeTableDefines, VxeTablePropTypes, VxeColumnPropTypes } from 'vxe-table'
 import { ButtonProps, IconProps } from '@arco-design/web-vue'
-import { ITableColumnInfo } from './type'
+import { IQueryParams, ITableColumnInfo, IPaginationConfig, ITableFooterButtonConfig } from './type'
+
+export const defaultQueryParams: IQueryParams = {
+  currentPage: 1,
+  pageSize: 20,
+  keyword: '',
+  conditions: [],
+  sorts: []
+}
 
 export type PartialColumnInfo = Omit<ITableColumnInfo, 'field' | 'type'>
 
@@ -16,7 +24,7 @@ export type ISeqColumnConfig = PartialColumnInfo & {
 
 export const defaultCheckboxConfig: VxeTablePropTypes.CheckboxConfig = {
   showHeader: false, // 是否展示全选按钮
-  checkStrictly: false, // 是否开启严格选择模式
+  checkStrictly: false, // 是否开启严格选择模式(父子互不关联)
   checkRowKeys: undefined, // 默认指定勾选行, 需配置row-config.keyField
   reserve: false, // 是否保留勾选
   trigger: 'row' // 复选框勾选模式
@@ -51,4 +59,21 @@ export const defaultButtonProps: ButtonProps = {
 export const defaultIconProps: IconProps = {
   size: 18,
   style: 'color: rgb(var(--danger-6))'
+}
+
+export const defaultPaginationConfig: IPaginationConfig = {
+  total: 0,
+  baseSize: 3,
+  size: 'small',
+  showPageSize: true,
+  pageSizeOptions: [20, 50, 100, 200],
+  showJumper: true,
+  showTotal: true
+}
+
+export const defaultTableFooterButtonConfig: ITableFooterButtonConfig = {
+  selectAllButtonVisible: true,
+  invertButtonVisible: true,
+  deleteButtonVisible: true,
+  deleteButtonPermission: ''
 }
